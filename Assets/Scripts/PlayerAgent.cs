@@ -22,32 +22,33 @@ namespace Completed
 
         public void HandleAttemptMove()
         {
+
             // TODO: Change the reward below as appropriate. If you want to add a cost per move, you could change the reward to -1.0f (for example).
-            AddReward(0.0f);
+            AddReward(-0.01f);
         }
 
         public void HandleFinishlevel()
         {
             // TODO: Change the reward below as appropriate.
-            AddReward(0.0f);
+            AddReward(2.0f);
         }
 
         public void HandleFoundFood()
         {
             // TODO: Change the reward below as appropriate.
-            AddReward(0.0f);
+            AddReward(1.0f);
         }
 
         public void HandleFoundSoda()
         {
             // TODO: Change the reward below as appropriate.
-            AddReward(0.0f);
+            AddReward(1.0f);
         }
 
         public void HandleLoseFood(int loss)
         {
             // TODO: Change the reward below as appropriate.
-            AddReward(0.0f);
+            AddReward(-0.01f);
         }
 
         public void HandleLevelRestart(bool gameOver)
@@ -72,11 +73,9 @@ namespace Completed
         {
             // TODO: Insert proper code here for collecting the observations!
             // At the moment this code just feeds in 10 observations, all hardcoded to zero, as a placeholder.
-
-            for (int i = 0; i < 10; i++)
-            {
-                sensor.AddObservation(0.0f);
-            }
+            sensor.AddObservation(gameObject.transform.position.x);
+            sensor.AddObservation(gameObject.transform.position.y);
+            
 
             base.CollectObservations(sensor);
         }
@@ -88,6 +87,7 @@ namespace Completed
 
         public override void OnActionReceived(float[] vectorAction)
         {
+            
             //If it's not the player's turn, exit the function.
             if (!CanMove()) return;
 

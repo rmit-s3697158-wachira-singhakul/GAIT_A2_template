@@ -209,6 +209,7 @@ namespace Completed
             //Check if food point total is less than or equal to zero.
             if (food <= 0)
             {
+				agent.AddReward(-1.0f);
                 //Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.
                 SoundManager.instance.PlaySingle(gameOverSound);
 
