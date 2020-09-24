@@ -1,4 +1,26 @@
 ﻿using UnityEngine;
+
+// ***** TODO: DELETE THIS DUMMY CODE AND UNCOMMENT THE CODE BELOW IT *****
+namespace Completed
+{
+    //Player inherits from MovingObject, our base class for objects that can move, Enemy also inherits from this.
+    public class PlayerAgent : MonoBehaviour
+    {
+        public void HandleAttemptMove() { }
+
+        public void HandleFinishlevel() { }
+
+        public void HandleFoundFood() { }
+
+        public void HandleFoundSoda() { }
+
+        public void HandleLoseFood(int loss) { }
+
+        public void HandleLevelRestart(bool gameOver) { }
+    }
+}
+
+/*
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 
@@ -59,13 +81,11 @@ namespace Completed
             }
 
             // NOTE: You might also want to end the episode whenever the player successfully reaches the exit sign. You can achieve this by uncommenting the below:
-            /*
-            else
-            {
-                // Probably *is* best to consider episodes finished when the exit is reached
-                EndEpisode();
-            }
-            */
+            //else
+            //{
+            //    // Probably *is* best to consider episodes finished when the exit is reached
+            //    EndEpisode();
+            //}
         }
 
         public override void CollectObservations(VectorSensor sensor)
@@ -211,3 +231,4 @@ namespace Completed
         }
     }
 }
+*/
