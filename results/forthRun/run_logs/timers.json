@@ -1,0 +1,49 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1601356569",
+        "python_version": "3.8.1 (tags/v3.8.1:1b293b6, Dec 18 2019, 23:11:46) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Program Files\\python3.8\\Scripts\\mlagents-learn config/ppo/roguelike.yaml --run-id=forthRun --resume",
+        "mlagents_version": "0.19.0",
+        "mlagents_envs_version": "0.19.0",
+        "communication_protocol_version": "1.0.0",
+        "tensorflow_version": "2.3.0",
+        "numpy_version": "1.18.2",
+        "end_time_seconds": "1601356583"
+    },
+    "total": 14.199736099999999,
+    "count": 1,
+    "self": 0.320014699999998,
+    "children": {
+        "run_training.setup": {
+            "total": 0.005501800000000223,
+            "count": 1,
+            "self": 0.005501800000000223
+        },
+        "TrainerController.start_learning": {
+            "total": 13.8742196,
+            "count": 1,
+            "self": 0.0001629000000011871,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 13.794891699999999,
+                    "count": 1,
+                    "self": 13.794891699999999
+                },
+                "TrainerController._save_models": {
+                    "total": 0.07916499999999971,
+                    "count": 1,
+                    "self": 2.060000000270179e-05,
+                    "children": {
+                        "RLTrainer._checkpoint": {
+                            "total": 0.079144399999997,
+                            "count": 1,
+                            "self": 0.079144399999997
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -18,13 +18,19 @@
                 "file_path": "results\\thirdRun\\PlayerBehaviour\\PlayerBehaviour-502841.nn",
                 "reward": 2.7250002436339855,
                 "creation_time": 1600924163.4051027
+            },
+            {
+                "steps": 513513,
+                "file_path": "results\\thirdRun\\PlayerBehaviour\\PlayerBehaviour-513513.nn",
+                "reward": 0.295000190846622,
+                "creation_time": 1601205217.7957065
             }
         ],
         "final_checkpoint": {
-            "steps": 502841,
+            "steps": 513513,
             "file_path": "results\\thirdRun\\PlayerBehaviour.nn",
-            "reward": 2.7250002436339855,
-            "creation_time": 1600924163.4051027
+            "reward": 0.295000190846622,
+            "creation_time": 1601205217.7957065
         }
     },
     "metadata": {

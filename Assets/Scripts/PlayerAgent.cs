@@ -8,23 +8,45 @@ namespace Completed
     public class PlayerAgent : Agent
     {
         private Player player;
+        private BoardManager board;
         private int lastAction = 0;
+        private Vector3 exitPos;
+        private Vector3[] enemyPos;
+        private Vector3[] foodPos;
+        private Vector3[] sodaPos;
+        private GameObject[] foods;
+        private GameObject[] sodas;
+        private GameObject[] enemys;
+        private GameObject exit;
 
         void Start()
         {
             player = GetComponent<Player>();
+            board = GetComponent<BoardManager>();
+            foods = GameObject.FindGameObjectsWithTag("Food");
+            sodas = GameObject.FindGameObjectsWithTag("Soda");
+            enemys = GameObject.FindGameObjectsWithTag("Enemy");
+            exit = GameObject.FindGameObjectWithTag("Exit");
+           
+            
+
         }
 
         public override void OnEpisodeBegin()
         {
             // TODO: Add any necessary code
+            foods = GameObject.FindGameObjectsWithTag("Food");
+            sodas = GameObject.FindGameObjectsWithTag("Soda");
+            enemys = GameObject.FindGameObjectsWithTag("Enemy");
+            exit = GameObject.FindGameObjectWithTag("Exit");
+            exitPos = exit.transform.position;
         }
 
         public void HandleAttemptMove()
         {
 
             // TODO: Change the reward below as appropriate. If you want to add a cost per move, you could change the reward to -1.0f (for example).
-            AddReward(-0.01f);
+            AddReward(-0.005f);
         }
 
         public void HandleFinishlevel()
@@ -36,19 +58,20 @@ namespace Completed
         public void HandleFoundFood()
         {
             // TODO: Change the reward below as appropriate.
-            AddReward(1.0f);
+            AddReward(0.25f);
         }
 
         public void HandleFoundSoda()
         {
             // TODO: Change the reward below as appropriate.
-            AddReward(1.0f);
+            AddReward(0.5f);
         }
 
         public void HandleLoseFood(int loss)
         {
+            float foodLoss = loss * 0.005f;
             // TODO: Change the reward below as appropriate.
-            AddReward(-0.01f);
+            AddReward(-foodLoss);
         }
 
         public void HandleLevelRestart(bool gameOver)
@@ -73,10 +96,41 @@ namespace Completed
         {
             // TODO: Insert proper code here for collecting the observations!
             // At the moment this code just feeds in 10 observations, all hardcoded to zero, as a placeholder.
-            sensor.AddObservation(gameObject.transform.position.x);
-            sensor.AddObservation(gameObject.transform.position.y);
-            
-
+            sensor.AddObservation(player.transform.position.x);
+            sensor.AddObservation(player.transform.position.y);
+            if (foods != null)
+            {
+                for (int i = 0; i < foods.Length; i++)
+                {
+                    if (foods[i] != null)
+                    {
+                        sensor.AddObservation(foods[i].transform.position);
+                        sensor.AddObservation(Vector3.Distance(foods[i].transform.position, player.transform.position));
+                    }
+                }
+            }
+            if (sodas != null)
+            {
+                for (int i = 0; i < sodas.Length; i++)
+                {
+                    if (sodas[i] != null)
+                    {
+                        sensor.AddObservation(sodas[i].transform.position);
+                        sensor.AddObservation(Vector3.Distance(sodas[i].transform.position, player.transform.position));
+                    }
+                }
+            }
+            /*if (enemys != null)
+            {
+                for (int i = 0; i < enemys.Length; i++)
+                {
+                    sensor.AddObservation(enemys[i].transform.position);
+                }
+            }*/
+ 
+            sensor.AddObservation(exitPos);
+            sensor.AddObservation(Vector3.Distance(player.transform.position, exitPos));
+           
             base.CollectObservations(sensor);
         }
 

@@ -36,8 +36,9 @@ namespace Completed
 		public GameObject[] foodTiles;									//Array of food prefabs.
 		public GameObject[] enemyTiles;									//Array of enemy prefabs.
 		public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
+		public Vector3 exitPos;
 
-        private GameObject dynamicObjectsHolder;
+		private GameObject dynamicObjectsHolder;
 		private GameObject boardHolder;									//A variable to store a reference to the transform of our Board object.
 		private List <Vector3> gridPositions = new List <Vector3> ();   //A list of possible locations to place tiles.
 
@@ -115,7 +116,7 @@ namespace Completed
 				
 				//Choose a random tile from tileArray and assign it to tileChoice
 				GameObject tileChoice = tileArray[Random.Range (0, tileArray.Length)];
-
+				
                 //Instantiate tileChoice at the position returned by RandomPosition with no change in rotation
                 Instantiate(tileChoice, randomPosition, Quaternion.identity, dynamicObjectsHolder.transform);
             }
@@ -201,7 +202,7 @@ namespace Completed
             player_go.transform.position = newPlayerPos;
             player_go.GetComponent<Player>().smoothMovementEnd = newPlayerPos;
 
-            Vector3 exitPos;
+           
             switch (exitPosition)
             {
                 case 0:
